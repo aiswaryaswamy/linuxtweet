@@ -6,8 +6,8 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the aiswarya branch
   push:
-    branches: 
-      'aiswarya'
+    branches:  
+       'aiswarya'
   pull_request:
     branches: [ aiswarya ]
 
@@ -24,11 +24,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    
+       
       - name: Checkout 
         uses: actions/checkout@v2
       
-       
+      
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
@@ -36,7 +36,7 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           
       - name: Set up Docker Buildx
-        uses: docker/build-push-sction@v2
+        uses: docker/setup-buildx-action@v1
       
       - name: Build and push
         uses: docker/build-push-action@v2
